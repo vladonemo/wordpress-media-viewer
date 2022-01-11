@@ -4,27 +4,11 @@ require 'settings.php';
 <html>
 <head>
     <title><?php echo $page_title ?></title>
-    <script src="splide/splide.min.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="splide/splide.min.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            new Splide('#image-slider', {}).mount();
-        });
-    </script>
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-<div id="image-slider" class="splide">
-    <div class="splide__track">
-        <ul class="splide__list">
-            <?php
-            for ($i = 0; $i < $slider_count; $i++) {
-                echo '
-                <li class="splide__slide">
-                    <img src="image.php?id=' . $i . '">
-                </li>';
-            }
-            ?>
-        </ul>
-    </div>
+<img class="img" src="image.php?id=<?php echo $_GET['id'] ?? 0 ?>"/>
+<div class="buttons">
+    <button class="button" onclick="location.href='slide.php';"><?php echo $translations->previous ?></button>
 </div>
