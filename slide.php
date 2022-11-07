@@ -1,11 +1,13 @@
 <?php
 require 'settings.php';
+require 'wp.php';
+
 ?>
 <html>
 <head>
     <title><?php echo $page_title ?></title>
     <script src="splide/splide.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?1806">
     <link rel="stylesheet" href="splide/splide.min.css">
     <script>
         let currentIndex = 0;
@@ -15,7 +17,7 @@ require 'settings.php';
                 currentIndex = newIndex;
             })
             splide.on('click', function(slide) {
-                location.href='index.php?id='+slide.index;
+                location.href='index.php?id='+slide.slide.getAttribute('image-id');
             })
         });
     </script>
@@ -26,10 +28,11 @@ require 'settings.php';
         <div class="splide__track">
             <ul class="splide__list" style="height: 90%">
                 <?php
-                for ($i = 0; $i < $slider_count; $i++) {
+                $media = (new WpWrapper($wp_root_url))->getMediaIds($wp_media_search_all);
+                foreach ($media as $id) {
                     echo '
-                <li class="splide__slide">
-                    <img src="image.php?id=' . $i . '">
+                <li class="splide__slide" image-id="' . $id . '">
+                    <img src="image.php?id=' . $id . '">
                 </li>';
                 }
                 ?>

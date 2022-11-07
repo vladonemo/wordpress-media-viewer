@@ -10,9 +10,9 @@ function get_image($url)
     return imagerotate($image, array_values([0, 0, 0, 180, 0, 0, -90, 0, 90])[@exif_read_data($url)['Orientation'] ?: 0], 0);
 }
 
-$wpWrapper = new WpWrapper($wp_root_url, $wp_media_params);
+$wp_wrapper = new WpWrapper($wp_root_url);
 
-$url = $wpWrapper->getImageUrlById($_GET['id']);
+$url = $wp_wrapper->getImageUrlById($_GET['id']);
 if (!$url) {
     echo file_get_contents(realpath( $_SERVER['DOCUMENT_ROOT'].$no_image_path));
 }

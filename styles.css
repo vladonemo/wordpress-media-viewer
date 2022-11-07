@@ -7,6 +7,15 @@
     display: block
 }
 
+.splide__pagination__page.is-active {
+    background: black!important;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, serif;
+}
+
 .img {
     width: 100%;
     height: auto;
