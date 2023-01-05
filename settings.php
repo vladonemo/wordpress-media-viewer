@@ -1,8 +1,8 @@
 <?php
 $wp_root_url = '';
-$wp_media_search_current = '';
-$wp_media_search_previous = '';
-$wp_media_search_next = '';
+$wp_media_search_current = [''];
+$wp_media_search_previous = [''];
+$wp_media_search_next = [''];
 $wp_media_search_all = '';
 $slider_count = 5;
 $page_title = 'Wordpress media slider';

@@ -29,8 +29,15 @@ class WpWrapper
 
     function getFirstMediaId($search_term)
     {
-        $media_array = $this->getMedia($search_term);
-        return empty($media_array) ? 0 : $media_array[0]->id;
+        foreach ($search_term as $search)
+        {
+            $media_array = $this->getMedia($search);
+            if (!empty($media_array))
+            {
+                return $media_array[0]->id;
+            }
+        }
+        return 0;
     }
 
     function getImageUrlById($id)
